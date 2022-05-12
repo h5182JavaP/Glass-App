@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Dutch Glass</string>
+
+    <string name="login_txt">Login</string>
+    <string name="or_txt">OR</string>
+    <string name="create_acc_txt">Create Account</string>
+
+
+    <string-array name="programming_languages">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Python</item>
+        <item>CPP</item>
+    </string-array>
+
+    <!--    Registration-->
+    <string name="rg_name">Name*</string>
+    <string name="rg_email">E-mail</string>
+    <string name="rg_reference">Reference</string>
+    <string name="rg_address">Address*</string>
+    <string name="rg_mobile">Mobile No.*</string>
+    <string name="rg_gst">GST</string>
+    <string name="rg_select_p">Select Person</string>
+    <string name="rg_password">Password</string>
+    <string name="rg_create_ac">Create Account</string>
+
+    <!--    Login-->
+    <string name="login_email">E-mail</string>
+    <string name="login_pass">Password</string>
+
+    <!--    Order List-->
+    <string name="order_list">Order List</string>
+    <string name="glass_type_1">Glass Type : SGU</string>
+    <string name="glass_type_2">Glass Type : DGU</string>
+    <string name="glass_type_3">Glass Type : Lamination</string>
+    <string name="glass_type_4">Glass Type : Annealed</string>
+    <string name="glass_type_5">Glass Type : Laminated DGU</string>
+    <string name="order_btn">Order</string>
+
+    <!--    Inquiry Form-->
+    <string name="inquiry_form">Inquiry Form</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="submit_btn">Submit</string>
+
+    <string name="info_glass_type">Glass Type</string>
+    <string name="info_sgu">SGU</string>
+    <string name="info_dgu">DGU</string>
+    <string name="info_standard">Standard</string>
+    <string name="info_inch">inch</string>
+    <string name="info_mm">mm</string>
+    <string name="info_thickness">Thickness</string>
+    <string name="info_material_det">Material Details</string>
+    <string name="info_glass_width">Glass Width</string>
+    <string name="info_glass_height">Glass Height</string>
+    <string name="info_quantity">Quantity</string>
+    <string name="info_photo">Photo Upload</string>
+    <string name="info_notes">Notes</string>
+    <string name="info_glass_1">Glass 1</string>
+    <string name="info_glass_2">Glass 2</string>
+    <string name="info_glass_3">Glass 3</string>
+    <string name="info_gap">Gap</string>
+    <string name="info_pvb">PVB</string>
+
+    <!--    Address-->
+    <string name="address_title">Address</string>
+    <string name="street_no">Street No.</string>
+    <string name="address_det">Address</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="pincode">Pincode</string>
+    <string name="save">Save</string>
+
+
+</resources>
