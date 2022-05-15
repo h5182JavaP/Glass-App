@@ -8,22 +8,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.my.app.glassapp.PathUtil;
+import com.my.app.glassapp.R;
 import com.my.app.glassapp.utils.BtnOnClickListener;
 import com.my.app.glassapp.utils.DataConverter;
 import com.my.app.glassapp.adapter.AnnealedTableAdapter;
@@ -42,7 +44,6 @@ import com.my.app.glassapp.model.SGUTable;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 
 public class OrderListActivity extends AppCompatActivity implements BtnOnClickListener {
@@ -68,6 +69,12 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
     private String tableValue;
     private boolean isPermitted;
     private String imgepath;
+    String[] gapCategories = {"06", "08", "10", "12", "14", "15", "16", "18", "20", "22"};
+    String[] pvbCategories = {"0.38", "0.16", "1.14", "1.52"};
+    String dguGap;
+    String lDguGap;
+    String laminationPVB;
+    String laminatedPVB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,10 +91,88 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
 
         sguData = dao.getSGUData();
         dguData = dao.getDGUData();
-        lDGUData = dao.getLDGUData();
         laminationData = dao.getLaminationData();
         annealedData = dao.getAnnealedData();
+        lDGUData = dao.getLDGUData();
 //        add10TestItems(sguData);
+        if (sguData.size() != 0) {
+            binding.tvHeaderSGU.setText(sguData.get(0).getSgu_thickness() + "  " + sguData.get(0).getSgu_materialDetails());
+        }
+        if (dguData.size() != 0) {
+            if (dguData.get(0).getDgu_gap().equals("0")) {
+                dguGap = gapCategories[0];
+            } else if (dguData.get(0).getDgu_gap().equals("1")) {
+                dguGap = gapCategories[1];
+            } else if (dguData.get(0).getDgu_gap().equals("2")) {
+                dguGap = gapCategories[2];
+            } else if (dguData.get(0).getDgu_gap().equals("3")) {
+                dguGap = gapCategories[3];
+            } else if (dguData.get(0).getDgu_gap().equals("4")) {
+                dguGap = gapCategories[4];
+            } else if (dguData.get(0).getDgu_gap().equals("5")) {
+                dguGap = gapCategories[5];
+            } else if (dguData.get(0).getDgu_gap().equals("6")) {
+                dguGap = gapCategories[6];
+            } else if (dguData.get(0).getDgu_gap().equals("7")) {
+                dguGap = gapCategories[7];
+            } else if (dguData.get(0).getDgu_gap().equals("8")) {
+                dguGap = gapCategories[8];
+            } else if (dguData.get(0).getDgu_gap().equals("9")) {
+                dguGap = gapCategories[9];
+            }
+            binding.tvHeaderDGU.setText(dguData.get(0).getDgu_glass_1() + "   " + dguGap + "   " + dguData.get(0).getDgu_glass_2());
+        }
+        if (laminationData.size() != 0) {
+            if (laminationData.get(0).getLamination_pvb().equals("0")) {
+                laminationPVB = pvbCategories[0];
+            } else if (laminationData.get(0).getLamination_pvb().equals("1")) {
+                laminationPVB = pvbCategories[1];
+            } else if (laminationData.get(0).getLamination_pvb().equals("2")) {
+                laminationPVB = pvbCategories[2];
+            } else if (laminationData.get(0).getLamination_pvb().equals("3")) {
+                laminationPVB = pvbCategories[3];
+            }
+            binding.tvHeaderLamination.setText(laminationData.get(0).getLamination_glass_1() + "   " + laminationPVB + "   " + laminationData.get(0).getLamination_glass_2());
+        }
+
+        if (annealedData.size() != 0) {
+            binding.tvHeaderAnnealed.setText(annealedData.get(0).getAnnealed_thickness() + "  " + annealedData.get(0).getAnnealed_materialDetails());
+        }
+
+        if (lDGUData.size() != 0) {
+            if (lDGUData.get(0).getLdgu_gap().equals("0")) {
+                lDguGap = gapCategories[0];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("1")) {
+                lDguGap = gapCategories[1];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("2")) {
+                lDguGap = gapCategories[2];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("3")) {
+                lDguGap = gapCategories[3];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("4")) {
+                lDguGap = gapCategories[4];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("5")) {
+                lDguGap = gapCategories[5];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("6")) {
+                lDguGap = gapCategories[6];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("7")) {
+                lDguGap = gapCategories[7];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("8")) {
+                lDguGap = gapCategories[8];
+            } else if (lDGUData.get(0).getLdgu_gap().equals("9")) {
+                lDguGap = gapCategories[9];
+            }
+
+            if (lDGUData.get(0).getLdgu_pvb().equals("0")) {
+                laminatedPVB = pvbCategories[0];
+            } else if (lDGUData.get(0).getLdgu_pvb().equals("1")) {
+                laminatedPVB = pvbCategories[1];
+            } else if (lDGUData.get(0).getLdgu_pvb().equals("2")) {
+                laminatedPVB = pvbCategories[2];
+            } else if (lDGUData.get(0).getLdgu_pvb().equals("3")) {
+                laminatedPVB = pvbCategories[3];
+            }
+            binding.tvHeaderLaminatedDGU.setText(lDGUData.get(0).getLdgu_glass_1() + "   " + laminatedPVB + "  " + lDGUData.get(0).getLdgu_glass_2() + "  " + lDguGap + "   " + lDGUData.get(0).getLdgu_glass_3());
+        }
 
         binding.rvSguTable.setHasFixedSize(true);
         binding.rvDguTable.setHasFixedSize(true);
@@ -106,6 +191,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
             Intent intent = new Intent(this, InquiryFormEditActivity.class);
             intent.putExtra("GlassType", "SGU");
             intent.putExtra("TablePosition", 0);
+            intent.putExtra("AddTypeFlag", true);
+            intent.putExtra("AddTypeFlag1", true);
+
             startActivity(intent);
             finish();
         });
@@ -113,6 +201,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
             Intent intent = new Intent(this, InquiryFormEditActivity.class);
             intent.putExtra("GlassType", "DGU");
             intent.putExtra("TablePosition", 0);
+            intent.putExtra("AddTypeFlag", true);
+            intent.putExtra("AddTypeFlag1", true);
+
             startActivity(intent);
             finish();
         });
@@ -121,6 +212,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
             Intent intent = new Intent(this, InquiryFormEditActivity.class);
             intent.putExtra("GlassType", "Lamination");
             intent.putExtra("TablePosition", 0);
+            intent.putExtra("AddTypeFlag", true);
+            intent.putExtra("AddTypeFlag1", true);
+
             startActivity(intent);
             finish();
         });
@@ -128,6 +222,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
             Intent intent = new Intent(this, InquiryFormEditActivity.class);
             intent.putExtra("GlassType", "Annealed");
             intent.putExtra("TablePosition", 0);
+            intent.putExtra("AddTypeFlag", true);
+            intent.putExtra("AddTypeFlag1", true);
+
             startActivity(intent);
             finish();
         });
@@ -135,6 +232,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
             Intent intent = new Intent(this, InquiryFormEditActivity.class);
             intent.putExtra("GlassType", "LaminatedDGU");
             intent.putExtra("TablePosition", 0);
+            intent.putExtra("AddTypeFlag", true);
+            intent.putExtra("AddTypeFlag1", true);
+
             startActivity(intent);
             finish();
         });
@@ -145,12 +245,35 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
         });
 
         binding.imgLogout.setOnClickListener(view -> {
-            SharedPreferences sharedPreferences = getSharedPreferences("LoginPref", MODE_PRIVATE);
-            SharedPreferences.Editor myEdit = sharedPreferences.edit();
-            myEdit.putBoolean("login", false);
-            myEdit.commit();
-            startActivity(new Intent(OrderListActivity.this, MainActivity.class));
-            finish();
+
+            final Dialog dialog = new Dialog(OrderListActivity.this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_logout);
+
+            TextView tvYes = (TextView) dialog.findViewById(R.id.tv_yes);
+            TextView tvNo = (TextView) dialog.findViewById(R.id.tv_no);
+
+            tvYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    SharedPreferences sharedPreferences = getSharedPreferences("LoginPref", MODE_PRIVATE);
+                    SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                    myEdit.putBoolean("login", false);
+                    myEdit.commit();
+                    startActivity(new Intent(OrderListActivity.this, MainActivity.class));
+                    finish();
+                }
+            });
+            tvNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
         });
     }
 
@@ -236,8 +359,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
                 Uri uri = data.getData();
 //                imgepath = uri.getPath();
                 try {
-                    imgepath = PathUtil.getPath(this,uri);
-                } catch (URISyntaxException e) {
+                    imgepath = PathUtil.getPath(this, uri);
+//                    imgepath = uri.toString();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 try {
@@ -280,8 +404,9 @@ public class OrderListActivity extends AppCompatActivity implements BtnOnClickLi
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             Uri uri = data.getData();
             try {
-                imgepath = PathUtil.getPath(this,uri);
-            } catch (URISyntaxException e) {
+                imgepath = PathUtil.getPath(this, uri);
+//                imgepath = uri.toString();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             try {

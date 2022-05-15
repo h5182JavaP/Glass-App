@@ -64,8 +64,9 @@
 
                 <TextView
                     android:id="@+id/tvHeaderSGU"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/cvAddSGU"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:paddingLeft="@dimen/_15sdp"
@@ -102,8 +103,6 @@
 
 
                 </androidx.cardview.widget.CardView>
-
-
             </RelativeLayout>
 
             <HorizontalScrollView
@@ -115,7 +114,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_sgu_table"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
             </HorizontalScrollView>
 
             <TextView
@@ -137,7 +137,7 @@
                     android:id="@+id/tvHeaderDGU"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/b_table_header_bg"
+                    android:layout_toLeftOf="@+id/cvAddDGU"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:paddingLeft="@dimen/_15sdp"
@@ -187,7 +187,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_dgu_table"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
             </HorizontalScrollView>
 
             <TextView
@@ -209,7 +210,7 @@
                     android:id="@+id/tvHeaderLamination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/b_table_header_bg"
+                    android:layout_toLeftOf="@+id/cvAddLamination"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:paddingLeft="@dimen/_15sdp"
@@ -260,7 +261,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_lamination_table"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
             </HorizontalScrollView>
 
             <TextView
@@ -282,7 +284,7 @@
                     android:id="@+id/tvHeaderAnnealed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/b_table_header_bg"
+                    android:layout_toLeftOf="@+id/cvAddAnnealed"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:paddingLeft="@dimen/_15sdp"
@@ -332,7 +334,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_annealed_table"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
             </HorizontalScrollView>
 
             <TextView
@@ -354,7 +357,7 @@
                     android:id="@+id/tvHeaderLaminatedDGU"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/b_table_header_bg"
+                    android:layout_toLeftOf="@+id/cvAddLaminatedDGU"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="start"
                     android:paddingLeft="@dimen/_15sdp"
@@ -405,7 +408,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_laminated_dgu_table"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
             </HorizontalScrollView>
         </LinearLayout>
     </ScrollView>

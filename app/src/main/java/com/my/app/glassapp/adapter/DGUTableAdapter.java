@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.my.app.glassapp.activity.InquiryFormEditActivity;
 import com.my.app.glassapp.activity.ViewImageActivity;
 import com.my.app.glassapp.model.DGUTable;
 
+import java.io.File;
 import java.util.List;
 
 public class DGUTableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -123,11 +125,17 @@ private Bitmap bmpImage = null;
             height.setText(dguTable.getDgu_glassHeight());
             quantity.setText(dguTable.getDgu_quantity());
             notes.setText(dguTable.getDgu_note());
-            if (dguTable.getDgu_image() != null) {
+            /*if (dguTable.getDgu_image() != null) {
                 btnPhoto.setImageBitmap(DataConverter.convertByteArray2Image(dguTable.getDgu_image()));
                 bmpImage = DataConverter.convertByteArray2Image(dguTable.getDgu_image());
+            }*/
+            if (dguTable.getDgu_path() != null) {
+                File imgFile = new File(dguTable.getDgu_path());
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                btnPhoto.setImageBitmap(myBitmap);
             }
 
+/*
             btnPhoto.setOnClickListener(view -> {
                 final BottomSheetDialog dialog = new BottomSheetDialog(context);
                 dialog.setContentView(R.layout.btm_sheet_dialog);
@@ -170,6 +178,7 @@ private Bitmap bmpImage = null;
                 });
                 dialog.show();
             });
+*/
 
 
             btnEdit.setOnClickListener(view -> {
@@ -177,6 +186,7 @@ private Bitmap bmpImage = null;
                 Intent intent = new Intent(context, InquiryFormEditActivity.class);
                 intent.putExtra("GlassType", "DGU");
                 intent.putExtra("TablePosition", dguTable.getDgu_id());
+                intent.putExtra("AddTypeFlag", true);
                 context.startActivity(intent);
                 activity.finish();
             });

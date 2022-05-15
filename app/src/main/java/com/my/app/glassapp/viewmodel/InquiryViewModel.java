@@ -9,6 +9,7 @@ import com.my.app.glassapp.api.model.InquiryData;
 import com.my.app.glassapp.api.model.LoginUser;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -30,14 +31,14 @@ public class InquiryViewModel extends ViewModel {
         return liveData;
     }
 
-    public void apiCall(Map<String, RequestBody> map, String token, MultipartBody.Part path) {
+    public void apiCall(HashMap<String, RequestBody> map, String token, MultipartBody.Part[] path) {
 //    public void apiCall(Map<String, RequestBody> map, String token) {
         RetrofitService service = RetrofitClient.getClient();
 //        File file=new File(path);
 //        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), path);
 //        MultipartBody.Part multipartBody =MultipartBody.Part.createFormData("order[0][order_items][2][image]",file.getName(),requestFile);
-        service.inquiry(token,map, path ).enqueue(new Callback<InquiryData>() {
-//        service.inquiry(map,  token).enqueue(new Callback<InquiryData>() {
+        service.inquiry(token, path, map).enqueue(new Callback<InquiryData>() {
+            //        service.inquiry(token,map).enqueue(new Callback<InquiryData>() {
             @Override
             public void onResponse(Call<InquiryData> call, Response<InquiryData> response) {
                 if (response.isSuccessful()) {

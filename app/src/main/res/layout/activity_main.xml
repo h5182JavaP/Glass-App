@@ -66,10 +66,10 @@
             android:layout_marginLeft="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginRight="@dimen/_25sdp"
-            android:elevation="8dp"
+            android:elevation="5dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="@dimen/_5sdp"
-            card_view:cardElevation="10dp">
+            card_view:cardElevation="5dp">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -60,7 +60,8 @@
                 style="@style/TextTheme"
                 android:text="@string/street_no" />
 
-            <androidx.cardview.widget.CardView style="@style/CardTheme">
+            <androidx.cardview.widget.CardView
+                style="@style/CardTheme">
 
                 <EditText
                     android:id="@+id/et_street_no"

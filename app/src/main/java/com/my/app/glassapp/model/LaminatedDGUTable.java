@@ -19,6 +19,8 @@ public class LaminatedDGUTable {
     String ldgu_glass_3;
     @ColumnInfo(name = "Gap")
     String ldgu_gap;
+    @ColumnInfo(name = "PVB")
+    String ldgu_pvb;
     @ColumnInfo(name = "Width")
     String ldgu_glassWidth;
     @ColumnInfo(name = "Height")
@@ -31,6 +33,14 @@ public class LaminatedDGUTable {
     private String ldgu_path;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     byte[] ldgu_image;
+
+    public String getLdgu_pvb() {
+        return ldgu_pvb;
+    }
+
+    public void setLdgu_pvb(String ldgu_pvb) {
+        this.ldgu_pvb = ldgu_pvb;
+    }
 
     public String getLdgu_path() {
         return ldgu_path;

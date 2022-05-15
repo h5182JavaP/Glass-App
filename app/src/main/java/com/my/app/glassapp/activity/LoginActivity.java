@@ -56,14 +56,16 @@ public class LoginActivity extends AppCompatActivity {
         binding.cvLogin.setOnClickListener(view -> {
 
             if (TextUtils.isEmpty(binding.etLoginEmail.getText().toString())) {
-                Toast.makeText(LoginActivity.this, "No Email Provided!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Please enter email address", Toast.LENGTH_SHORT).show();
                 return;
             } else if (!isValidEmail(binding.etLoginEmail.getText().toString())) {
-                Toast.makeText(LoginActivity.this, "Email is invalid!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Please enter valid email address", Toast.LENGTH_SHORT).show();
                 return;
             } else if (TextUtils.isEmpty(binding.etLoginPassword.getText().toString())) {
-                Toast.makeText(LoginActivity.this, "No Password Entered!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                 return;
+            } else if (binding.etLoginPassword.getText().toString().length() < 8) {
+                Toast.makeText(LoginActivity.this, "Please enter minimum 8 characters", Toast.LENGTH_SHORT).show();
             } else {
                 showLoading();
                 Map<String, Object> map = new HashMap<>();
@@ -105,13 +107,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+/*
     public boolean isValidEmail(String email) {
         Pattern pattern;
         Matcher matcher;
-        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+//        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+*/
+
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }
 
     private void showLoading() {

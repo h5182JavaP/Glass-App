@@ -2,27 +2,18 @@ package com.my.app.glassapp.api;
 
 
 import com.my.app.glassapp.api.model.InquiryData;
-import com.my.app.glassapp.api.model.InquirySaveTable;
 import com.my.app.glassapp.api.model.LoginUser;
 import com.my.app.glassapp.api.model.RegisterUser;
-import com.my.app.glassapp.model.AllUsersResponse;
-import com.my.app.glassapp.model.SGUTable;
-import com.my.app.glassapp.model.UsersItem;
+import com.my.app.glassapp.model.AllSalesPersonItem;
 
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -32,8 +23,8 @@ import retrofit2.http.QueryMap;
 
 public interface RetrofitService {
 
-    @GET("api/allusers")
-    Call<AllUsersResponse> getAllUser();
+    @GET("api/users/getAllSalesPerson")
+    Call<List<AllSalesPersonItem>> getAllUser();
 
     @POST("api/login")
     Call<LoginUser> login(@QueryMap Map<String, Object> map);
@@ -51,21 +42,12 @@ public interface RetrofitService {
                                 @Query("gst") String gst
     );
 
-    @Headers({"Content-Type: application/json"})
+    //    @Headers({"Content-Type: application/json"})
     @Multipart
     @POST("api/inquiry")
     Call<InquiryData> inquiry(
-                              @Header("Authorization") String authHeader,
-                              @PartMap Map<String, RequestBody> map,
-                              @Part MultipartBody.Part file
+            @Header("Authorization") String authHeader,
+            @Part MultipartBody.Part[] file,
+            @PartMap() Map<String, RequestBody> map
     );
-
-    /*@Headers({"Content-Type: application/json;charset=UTF-8"})
-    @Multipart
-    @POST("api/inquiry")
-    Call<InquiryData> inquiry(@PartMap Map<String, RequestBody> map,
-                              @Header("Authorization") String authHeader
-    );*/
-
-
 }

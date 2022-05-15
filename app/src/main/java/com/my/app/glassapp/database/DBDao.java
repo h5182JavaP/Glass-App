@@ -89,14 +89,14 @@ public interface DBDao {
     @Query("UPDATE dgutable SET dgu_image = :img,ImagePath = :path WHERE dgu_id = :id")
     void updateDGUImage(int id, byte[] img,String path);
 
-    @Query("UPDATE laminationtable SET Standard = :standard,Thickness = :thickness,pvb = :pvb,Material = :material," +
+    @Query("UPDATE laminationtable SET Standard = :standard,Glass1 = :glass1,pvb = :pvb,Glass2 = :glass2," +
             "Width = :width,Height = :height,Quantity = :quantity,Note = :note,ImagePath = :path,lamination_image = :img WHERE lamination_id = :id")
-    void updateLaminationTable(int id, String standard, String thickness, String pvb, String material,
+    void updateLaminationTable(int id, String standard, String glass1, String pvb, String glass2,
                                String width, String height, String quantity, String note,String path, byte[] img);
 
-    @Query("UPDATE laminationtable SET Standard = :standard,Thickness = :thickness,pvb = :pvb,Material = :material," +
+    @Query("UPDATE laminationtable SET Standard = :standard,Glass1 = :glass1,pvb = :pvb,Glass2 = :glass2," +
             "Width = :width,Height = :height,Quantity = :quantity,Note = :note WHERE lamination_id = :id")
-    void updateLaminationTable1(int id, String standard, String thickness, String pvb, String material,
+    void updateLaminationTable1(int id, String standard, String glass1, String pvb, String glass2,
                                 String width, String height, String quantity, String note);
 
     @Query("UPDATE laminationtable SET lamination_image = :img ,ImagePath = :path WHERE lamination_id = :id")
@@ -116,14 +116,14 @@ public interface DBDao {
     void updateAnnealedImage(int id, byte[] img,String path);
 
     @Query("UPDATE laminateddgutable SET Standard = :standard,Glass1 = :glass1,Glass2 = :glass2,Glass3 = :glass3," +
-            "Gap = :gap,Width = :width,Height = :height,Quantity = :quantity,Note = :note ,ImagePath = :imgepath ,ldgu_image = :img WHERE ldgu_id = :id")
+            "Gap = :gap,pvb = :pvb,Width = :width,Height = :height,Quantity = :quantity,Note = :note ,ImagePath = :imgepath ,ldgu_image = :img WHERE ldgu_id = :id")
     void updateLDGUTable(int id, String standard, String glass1, String glass2, String glass3,
-                         String gap, String width, String height, String quantity, String note, String imgepath, byte[] img);
+                         String gap,  String pvb, String width, String height, String quantity, String note, String imgepath, byte[] img);
 
     @Query("UPDATE laminateddgutable SET Standard = :standard,Glass1 = :glass1,Glass2 = :glass2,Glass3 = :glass3," +
-            "Gap = :gap,Width = :width,Height = :height,Quantity = :quantity,Note = :note  WHERE ldgu_id = :id")
+            "Gap = :gap,pvb = :pvb,Width = :width,Height = :height,Quantity = :quantity,Note = :note  WHERE ldgu_id = :id")
     void updateLDGUTable1(int id, String standard, String glass1, String glass2, String glass3,
-                          String gap, String width, String height, String quantity, String note);
+                          String gap, String pvb, String width, String height, String quantity, String note);
 
     @Query("UPDATE laminateddgutable SET ldgu_image = :img ,ImagePath = :path WHERE ldgu_id = :id")
     void updateLDGUImage(int id, byte[] img,String path);

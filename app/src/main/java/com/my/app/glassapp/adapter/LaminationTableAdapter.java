@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.my.app.glassapp.activity.InquiryFormEditActivity;
 import com.my.app.glassapp.activity.ViewImageActivity;
 import com.my.app.glassapp.model.LaminationTable;
 
+import java.io.File;
 import java.util.List;
 
 public class LaminationTableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -125,12 +127,18 @@ public class LaminationTableAdapter extends RecyclerView.Adapter<RecyclerView.Vi
          /*   if (laminationTable.getLamination_image() != null) {
                 btnPhoto.setImageBitmap(DataConverter.convertByteArray2Image(laminationTable.getLamination_image()));
             }*/
-            if (laminationTable.getLamination_image() != null) {
+            /*if (laminationTable.getLamination_image() != null) {
                     btnPhoto.setImageBitmap(DataConverter.convertByteArray2Image(laminationTable.getLamination_image()));
                     bmpImage = DataConverter.convertByteArray2Image(laminationTable.getLamination_image());
+            }*/
+            if (laminationTable.getLamination_path() != null) {
+                File imgFile = new File(laminationTable.getLamination_path());
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                btnPhoto.setImageBitmap(myBitmap);
             }
 
 
+/*
             btnPhoto.setOnClickListener(view -> {
                 final BottomSheetDialog dialog = new BottomSheetDialog(context);
                 dialog.setContentView(R.layout.btm_sheet_dialog);
@@ -172,6 +180,7 @@ public class LaminationTableAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 });
                 dialog.show();
             });
+*/
 
 
             btnEdit.setOnClickListener(view -> {
@@ -179,6 +188,7 @@ public class LaminationTableAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 Intent intent = new Intent(context, InquiryFormEditActivity.class);
                 intent.putExtra("GlassType", "Lamination");
                 intent.putExtra("TablePosition", laminationTable.getLamination_id());
+                intent.putExtra("AddTypeFlag", true);
                 context.startActivity(intent);
                 activity.finish();
             });

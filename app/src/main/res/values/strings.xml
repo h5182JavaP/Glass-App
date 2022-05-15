@@ -13,15 +13,20 @@
         <item>CPP</item>
     </string-array>
 
+    <string name="logout_msg1">Logout</string>
+    <string name="logout_msg">Are you sure you want to logout?</string>
+    <string name="logout_yes">Yes</string>
+    <string name="logout_no">No</string>
+
     <!--    Registration-->
     <string name="rg_name">Name*</string>
-    <string name="rg_email">E-mail</string>
-    <string name="rg_reference">Reference</string>
+    <string name="rg_email">E-mail*</string>
+    <string name="rg_reference">Reference Name</string>
     <string name="rg_address">Address*</string>
     <string name="rg_mobile">Mobile No.*</string>
     <string name="rg_gst">GST</string>
     <string name="rg_select_p">Select Person</string>
-    <string name="rg_password">Password</string>
+    <string name="rg_password">Password*</string>
     <string name="rg_create_ac">Create Account</string>
 
     <!--    Login-->
@@ -49,15 +54,15 @@
     <string name="info_inch">inch</string>
     <string name="info_mm">mm</string>
     <string name="info_thickness">Thickness</string>
-    <string name="info_material_det">Material Details</string>
+    <string name="info_material_det">Glass Details</string>
     <string name="info_glass_width">Glass Width</string>
     <string name="info_glass_height">Glass Height</string>
     <string name="info_quantity">Quantity</string>
     <string name="info_photo">Photo Upload</string>
     <string name="info_notes">Notes</string>
-    <string name="info_glass_1">Glass 1</string>
-    <string name="info_glass_2">Glass 2</string>
-    <string name="info_glass_3">Glass 3</string>
+    <string name="info_glass_1">Glass 1 Details</string>
+    <string name="info_glass_2">Glass 2 Details</string>
+    <string name="info_glass_3">Glass 3 Details</string>
     <string name="info_gap">Gap</string>
     <string name="info_pvb">PVB</string>
 

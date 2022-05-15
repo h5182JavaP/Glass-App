@@ -11,8 +11,8 @@ import com.my.app.glassapp.databinding.ActivityViewImageBinding;
 
 public class ViewImageActivity extends AppCompatActivity {
 
-    private byte[] imgBitmap;
-    private Bitmap bmpImage;
+    private boolean imgBitmap;
+    private Bitmap bmpImg;
     ActivityViewImageBinding binding;
 
     @Override
@@ -22,9 +22,13 @@ public class ViewImageActivity extends AppCompatActivity {
         binding = ActivityViewImageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        imgBitmap = getIntent().getByteArrayExtra("img");
-        bmpImage = DataConverter.convertByteArray2Image(imgBitmap);
+        imgBitmap = getIntent().getBooleanExtra("img1", false);
+        if (imgBitmap)
+            this.bmpImg = InquiryFormEditActivity.bmpImage;
+        else
+            this.bmpImg = InquiryFormActivity.bmpImage;
+//        bmpImg = DataConverter.convertByteArray2Image(imgBitmap);
 
-        binding.ivImage.setImageBitmap(bmpImage);
+        binding.ivImage.setImageBitmap(bmpImg);
     }
 }

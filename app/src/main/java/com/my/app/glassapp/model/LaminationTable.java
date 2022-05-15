@@ -11,10 +11,10 @@ public class LaminationTable {
     private int lamination_id;
     @ColumnInfo(name = "Standard")
     String lamination_standard;
-    @ColumnInfo(name = "Thickness")
-    String lamination_thickness;
-    @ColumnInfo(name = "Material")
-    String lamination_materialDetails;
+    @ColumnInfo(name = "Glass1")
+    String lamination_glass_1;
+    @ColumnInfo(name = "Glass2")
+    String lamination_glass_2;
     @ColumnInfo(name = "PVB")
     String lamination_pvb;
     @ColumnInfo(name = "Width")
@@ -54,20 +54,20 @@ public class LaminationTable {
         this.lamination_standard = lamination_standard;
     }
 
-    public String getLamination_thickness() {
-        return lamination_thickness;
+    public String getLamination_glass_1() {
+        return lamination_glass_1;
     }
 
-    public void setLamination_thickness(String lamination_thickness) {
-        this.lamination_thickness = lamination_thickness;
+    public void setLamination_glass_1(String lamination_glass_1) {
+        this.lamination_glass_1 = lamination_glass_1;
     }
 
-    public String getLamination_materialDetails() {
-        return lamination_materialDetails;
+    public String getLamination_glass_2() {
+        return lamination_glass_2;
     }
 
-    public void setLamination_materialDetails(String lamination_materialDetails) {
-        this.lamination_materialDetails = lamination_materialDetails;
+    public void setLamination_glass_2(String lamination_glass_2) {
+        this.lamination_glass_2 = lamination_glass_2;
     }
 
     public String getLamination_pvb() {
